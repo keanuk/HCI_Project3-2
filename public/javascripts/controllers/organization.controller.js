@@ -11,6 +11,7 @@
       $scope.deleteOrganization = deleteOrganization;
       $scope.update = update;
       $scope.edit = edit;
+      $scope.focusedOrganization = {};
 
       getOrganizations();
 
@@ -45,10 +46,17 @@
       }
 
       function getOrganizations(){
-        console.log("getting the organizations");
+        console.log('getting the organizations');
         OrganizationService.getAll();
         console.log(OrganizationService.getAll());
       }
+
+      $scope.getOneOrganization = function(organizationId) {
+        console.log('getting one organization: ' + organizationId);
+        $scope.focusedOrganization = OrganizationService.getOne(organizationId);
+        console.log('focusedOrganization = ' + $scope.focusedOrganization);
+
+      };
 
     }
 })()

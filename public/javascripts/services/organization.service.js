@@ -1,11 +1,11 @@
 (function(){
-  angular.module("volunteerApp")
-    .factory("OrganizationService", OrganizationService);
+  angular.module('volunteerApp')
+    .factory('OrganizationService', OrganizationService);
 
-    OrganizationService.$inject = ["$http"]; //$http == axios
+    OrganizationService.$inject = ['$http'];
 
     function OrganizationService($http){
-      var baseURL = "/organizations";
+      var baseURL = '/organizations';
       var organizations= [];
 
       function fetch(){
@@ -15,6 +15,13 @@
       function getAll(){
         return $http.get(baseURL)
                     .then(function(response){
+                      organizations = response.data.organizations;
+                    });
+      }
+
+      function getOne(organizationId){
+        return $http.get(`${baseURL}/${organizationId}`)
+                    .then(function(response) {
                       organizations = response.data.organizations;
                     });
       }
@@ -37,6 +44,7 @@
 
       return {
         getAll: getAll,
+        getOne: getOne,
         create: create,
         delete: deleteOrganization,
         update: update,
