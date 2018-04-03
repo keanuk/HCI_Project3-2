@@ -67,15 +67,18 @@ function populateDB(org, at) {
   })
 }
 </script>
+<div ng-controller="OrganizationController" class="container">
   <% include header/header.ejs %>
-  <div ng-controller="OrganizationController" class="container">
 
     <div class="categories">
       <div class="categories-button">Categories</div>
       <ul class="categories-list">
-        <li class="categories-list_item"><a href="">Category 1</a></li>
-        <li class="categories-list_item"><a href="">Category 2</a></li>
-        <li class="categories-list_item"><a href="">Category 3</a></li>
+        <li class="categories-list_item"><a ng-click="search = ''">All</a></li>
+        <li class="categories-list_item"><a ng-click="search = 'Community'">Community</a></li>
+        <li class="categories-list_item"><a ng-click="search = 'Children'">Children</a></li>
+        <li class="categories-list_item"><a ng-click="search = 'Medical'">Medical</a></li>
+        <li class="categories-list_item"><a ng-click="search = 'Food'">Food</a></li>
+        <li class="categories-list_item"><a ng-click="search = 'College Students'">College Students</a></li>
       </ul>
     </div>
 
@@ -107,7 +110,7 @@ function populateDB(org, at) {
     </section> -->
 
     <section class="organization-list">
-      <div ng-repeat="organization in organizations" class="organization-list_item">
+      <div ng-repeat="organization in organizations | filter:search" class="organization-list_item">
         <a href="/profile">
           <img src="#" alt="">
           <p>{{ organization.name }}</p>
