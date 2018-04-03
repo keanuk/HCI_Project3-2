@@ -17,18 +17,10 @@ var organizationRouter = require('./routers/organization.router');
 
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-// //connect to the database
-// mongoose.connect(mongoURI, {}).then(
-//   () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
-//     console.log('mongo is connected');
-//   },
-//   err => { /** handle initial connection error */
-//     console.log('error w mongo: ' + err);
-//   }
-// );
 
 // Routes
 app.use(organizationRouter);
