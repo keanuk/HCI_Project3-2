@@ -8,11 +8,11 @@ FB.init({
   version    : 'v2.12'
 });
 
-// FB.AppEvents.logPageView();
+  // FB.AppEvents.logPageView();
 
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
+  FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+  });
 
 };
 

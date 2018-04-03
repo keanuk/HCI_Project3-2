@@ -20,14 +20,8 @@ var organizationSchema = mongoose.Schema({
       default: Date.now
     }
   }],
-  headerImg: {
-    type: String,
-    default: 'http://via.placeholder.com/700x300'
-  },
-  profileImg: {
-    type: String,
-    default: 'http://via.placeholder.com/400x300'
-  }
+  headerImg: String,
+  profileImg: String
 });
 
 // Mongoose Model
