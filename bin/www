@@ -25,6 +25,19 @@ app.set('port', port);
 var credentials = {key: privateKey, cert: certificate};
 var server = https.createServer(credentials, app);
 
+
+var mongoose = require('mongoose');
+var mongoURI = process.env.MONGOURI || require("../secrets").MONGOURI;
+//connect to the database
+mongoose.connect(mongoURI, {}).then(
+  () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
+    console.log('mongo is connected');
+  },
+  err => { /** handle initial connection error */
+    console.log('error w mongo: ' + err);
+  }
+);
+
 /**
  * Listen on provided port, on all network interfaces.
  */
