@@ -5,6 +5,8 @@
     OrganizationController.$inject = ["$scope", "OrganizationService"];
 
     function OrganizationController($scope, OrganizationService){
+      $scope.search = '';
+      $scope.searchBar = '';
       $scope.organizations = [];
       $scope.newOrganization = {};
       $scope.addOrganization = addOrganization;
@@ -19,9 +21,12 @@
         return OrganizationService.fetch();
       },
       function onChange(){
-        $scope.organizations = OrganizationService.fetch();
+        $scope.organizations = OrganizationService.fetch(); 
       });
 
+      $scope.Click = function() {
+        $scope.search = $scope.searchBar;
+      }
       function edit(organization){
         console.log("editing");
         organization.edit = true;
@@ -50,7 +55,7 @@
         OrganizationService.getAll();
         console.log(OrganizationService.getAll());
       }
-
+      
       $scope.getOneOrganization = function(organizationId) {
         console.log('getting one organization: ' + organizationId);
         $scope.focusedOrganization = OrganizationService.getOne(organizationId);

@@ -1,16 +1,27 @@
+<script src="/javascripts/facebook.js"></script>
 <header class="header">
   <div class="title">
-    <a href="#"><h1>Title</h1></a>
+    <a href="/"><h1>Volunteer Hub</h1></a>
   </div>
   <nav class="navbar">
-    <ul>
+    <ul style="list-style-type: none;" id="barList">
       <li class="navbar_item"><a href="/">Home</a></li>
       <li class="navbar_item"><a href="/about">About</a></li>
+      <li>
+        <fb:login-button
+          scope="email, user_events"
+          onlogin="checkLoginState();"
+          class="navbar_item"
+          style="list-style-type: none;"
+          id="fbLogin">
+        </fb:login-button>
+      </li>
+      <li>
+
+      </li>
       <div class="search-bar">
-        <form action="#">
-          <input class="search-bar_text" type="text" placeholder="Search all organizations..">
-          <button class="search-bar_button" type="submit"><strong>GO</strong></button>
-        </form>
+          <input class="search-bar_text" ng-model = "searchBar" type="text" placeholder="Search all organizations..">
+          <button class="search-bar_button" ng-click ="Click()"><strong>GO</strong></button>
       </div>
     </ul>
   </nav>
