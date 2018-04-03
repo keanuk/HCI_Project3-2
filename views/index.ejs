@@ -9,10 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-app="volunteerApp">
-  <script src="/javascripts/facebook.js"></script>
   <% include header/header.ejs %>
   <div id="loggedOut" ng-style="loggedOut">
-    <h2>Please login to view volunteering organiztions</h2>
+    <section class="organization-list">
+      <h2>Please login to view volunteering organiztions</h2>
+    </section>
   </div>
   <div id="loggedIn" ng-controller="OrganizationController" class="container" ng-style="loggedIn">
     <div class="categories">

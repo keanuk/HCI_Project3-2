@@ -18,11 +18,15 @@ a {
 }
 
 #loggedOut{
-  display: block;
+  display: none;
 }
 
 #loggedIn {
   display: none;
+}
+
+#fbLogin {
+  display: block;
 }
 
 .header {

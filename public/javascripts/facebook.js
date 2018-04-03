@@ -28,39 +28,41 @@ function statusChangeCallback(response) {
  if(response.status === 'connected') {
    console.log('Logged in and authenticated');
 
-   // $scope.loggedOut = {'display': 'none'};
-   // $scope.loggedIn = {'display': 'block'};
-
-   document.getElementById("loggedOut").style.display = "none";
-   document.getElementById("loggedIn").style.display = "block";
-
+   if(document.getElementById("loggedOut")) {
+     document.getElementById("loggedOut").style.display = "none";
+     document.getElementById("loggedIn").style.display = "block";
+   }
+   document.getElementById("fbLogin").style.display = "none";
 
    let at = response.authResponse.accessToken;
 
    // let at = 'EAACEdEose0cBAKuIQxNGRYoipoGizISxnjZAnRXqW3PZBmEoYFrZABrxffJII54zIvA0QvOPZADqhutZA4z3dGgQiQ2MVh8USdFMvB7jAhWdtUuMIUtg3nGmfHJ2VD8PFZBcwSYuOzln0UZAZAZCkTLZC4say86ZAYsVUvokRJ2PftwWMTh20rcK43NX0dmZAHqGy2ZAKZAlEYeWeIWdYgJY9JiWDh';
 
-   console.log("Access token: " + at);
-
-   // for(org in orgs) {
-   //   populateDB(orgs[org], at);
-   // }
-
+   getProfile(at);
  }
  else {
    console.log('Not authenticated');
+
+   document.getElementById("loggedOut").style.display = "block";
+   document.getElementById("loggedIn").style.display = "none";
+   document.getElementById("fbLogin").style.display = "block";
  }
 }
 
 function checkLoginState() {
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-});
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
 }
 
-function populateDB(org, at) {
-  FB.api('/' + org + '?fields=name,events' + '&access_token=' + at, function(response) {
+function getProfile(at) {
+  FB.api('/' + 'me' + '?fields=name' + '&access_token=' + at, function(response) {
     if(response && !response.error) {
       console.log(response);
+
+      var entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(response.name));
+      document.getElementById("barList").appendChild(entry);
     }
     else {
       console.log(response.error);
