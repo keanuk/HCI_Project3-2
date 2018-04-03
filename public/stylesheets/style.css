@@ -295,7 +295,7 @@ label {
   font-size: 2em;
 }
 
-.feature-list_item:nth-child(odd) {
+.feature-list_item:nth-child(even) {
   background-color: #262626;
   color: white;
 }
