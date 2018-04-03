@@ -5,12 +5,75 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel="icon" type="image/png" href="#">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<<<<<<< HEAD
 <body>
   <script src="/javascripts/facebook.js"></script>
+=======
+<body ng-app="volunteerApp">
+  <script>
+  let at = 'EAACEdEose0cBALWMPEbugfmfdTd3Jn1sZCZCvOLNkxFG6EU0pvjCjiuHlaMumSOIFh9QTRFzEcXFSo5LMd7vZC5Q8yhxyw5YApPQrYeZCwk49NMSqC07ZCn7c8bKTqKJNibbCRbHkFLhZCFayGciGHC2NzrTmJZCMf73GZBprP0rBe1ZBwpYwaLsiq3LLlLqATkJmsL7I5XqBreVep1mCraHM';
+
+  let orgs = ['alachuahumane.org', 'AARP', 'sustainableuf', 'ShandsArtsinMedicine', 'HarnMuseumofArt', 'gatorsmiles', 'gatorpalsapp2017'];
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '291380158062880',
+    cookie     : true,
+    xfbml      : true,
+    version    : 'v2.12'
+  });
+
+  // FB.AppEvents.logPageView();
+
+  FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+  });
+
+};
+
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "https://connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+
+ function statusChangeCallback(response) {
+   if(response.status === 'connected') {
+     console.log('Logged in and authenticated');
+     console.log(response);
+     // at = response.authResponse.accessToken;
+
+     console.log(vm);
+
+     for(var org in orgs) {
+       populateDB($scope, orgs[org], at, vm);
+     }
+
+   }
+   else {
+     console.log('Not authenticated');
+   }
+ }
+
+function populateDB(org, at) {
+  FB.api('/' + org + '?fields=name,events' + '&access_token=' + at, function(response) {
+    if(response && !response.error) {
+      console.log(response);
+    }
+    else {
+      console.log(response.error);
+    }
+  })
+}
+</script>
+>>>>>>> 6d39e7c847c1a27e35c63d68665b70a2df6cf6cf
   <% include header/header.ejs %>
-  <div class="container">
+  <div ng-controller="OrganizationController" class="container">
 
     <div class="categories">
       <div class="categories-button">Categories</div>
@@ -21,12 +84,16 @@
       </ul>
     </div>
 
+<<<<<<< HEAD
 
     <section class="organization-list">
       <fb:login-button
         scope="email, user_events"
         onlogin="checkLoginState();">
       </fb:login-button>
+=======
+    <!-- <section class="organization-list">
+>>>>>>> 6d39e7c847c1a27e35c63d68665b70a2df6cf6cf
       <div class="organization-list_item">
         <a href="#">
           <img src="#" alt="">
@@ -49,10 +116,26 @@
         <a href="#">
           <img src="#" alt="">
           <p>Organization name</p>
+        </a>
+      </div>
+    </section> -->
+
+    <section class="organization-list">
+      <div ng-repeat="organization in organizations" class="organization-list_item">
+        <a href="/profile">
+          <img src="#" alt="">
+          <p>{{ organization.name }}</p>
         </a>
       </div>
     </section>
+
     <div><a  class="floating-action-button" href="/orgs">+</a></div>
   </div>
+<<<<<<< HEAD
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+=======
+  <script src="javascripts/app.js"></script>
+  <script src='/javascripts/controllers/organization.controller.js'></script>
+  <script src='/javascripts/services/organization.service.js'></script>
+>>>>>>> 6d39e7c847c1a27e35c63d68665b70a2df6cf6cf
 </body>
