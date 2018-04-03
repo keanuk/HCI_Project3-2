@@ -11,6 +11,17 @@
   <script src="/javascripts/facebook.js"></script>
   <% include header/header.ejs %>
   <div class="container">
+
+    <div class="categories">
+      <div class="categories-button">Categories</div>
+      <ul class="categories-list">
+        <li class="categories-list_item"><a href="">Category 1</a></li>
+        <li class="categories-list_item"><a href="">Category 2</a></li>
+        <li class="categories-list_item"><a href="">Category 3</a></li>
+      </ul>
+    </div>
+
+
     <section class="organization-list">
       <fb:login-button
         scope="email, user_events"
@@ -41,7 +52,7 @@
         </a>
       </div>
     </section>
-    <div><a  class="floating-action-button" href="#">+</a></div>
+    <div><a  class="floating-action-button" href="/orgs">+</a></div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
