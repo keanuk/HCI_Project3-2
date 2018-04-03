@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Add Organization</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="icon" type="image/png" href="#">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<% include header/header.ejs %>
+<body ng-app="volunteerApp">
+
+  <div ng-controller="OrganizationController" class="col-md-12">
+    <section class="organization-list">
+
+      <form name="newOrg" class="form-horizontal">
+        <fieldset>
+          <div class="form-group" show-errors>
+            <label>Name</label>
+            <input name="name" ng-model="newOrganization.name" type="text" id="name" class="form-control" placeholder="enter organization name" required>
+            <div ng-messages="Must include name" role="alert">
+              <p class="help-block error-text" message="required"></p>
+            </div>
+            <label>Username</label>
+            <input name="username" ng-model="newOrganization.username" type="text" id="username" class="form-control" placeholder="enter username">
+            <label>Website</label>
+            <input name="website" ng-model="newOrganization.website" type="text" id="website" class="form-control" placeholder="enter website">
+            <label>Facebook Url</label>
+            <input name="facebookURL" ng-model="newOrganization.facebookURL" type="text" id="facebookURL" class="form-control" placeholder="enter Facebook url">
+
+            <label>Description</label>
+            <input name="description" ng-model="newOrganization.description" type="text" id="description" class="form-control" placeholder="enter orgaization description">
+
+          </div>
+          <div class="form-group">
+            <button ng-click="addOrganization(newOrganization)" class="btn btn-default">submit</button>
+          </div>
+        </fieldset>
+      </form>
+
+    </section>
+  </div>
+  <script src="javascripts/app.js"></script>
+  <script src='/javascripts/controllers/organization.controller.js'></script>
+  <script src='/javascripts/services/organization.service.js'></script>
+</body>
