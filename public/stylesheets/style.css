@@ -268,11 +268,12 @@ label {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: #cecece;
+  background-color: #00b22a;
   border-radius: 50%;
   box-shadow: 0 6px 10px 0 #666;
   transition: all 0.1s ease-in-out;
   font-size: 100%;
+  color: white;
   text-align: center;
   line-height: 55px;
 }
