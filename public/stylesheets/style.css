@@ -289,6 +289,24 @@ label {
   resize: none;
 }
 
+.feature-list_item {
+  width: 100%;
+  height: auto;
+  font-size: 2em;
+}
+
+.feature-list_item:nth-child(odd) {
+  background-color: #262626;
+  color: white;
+}
+
+.big-word {
+  font-size: 3em;
+}
+
+.feature-list_item p {
+  padding: 8%;
+}
 
 @media screen and (min-width: 700px)  {
   .header {
