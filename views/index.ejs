@@ -8,67 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <script>
-  let at = 'EAACEdEose0cBALWMPEbugfmfdTd3Jn1sZCZCvOLNkxFG6EU0pvjCjiuHlaMumSOIFh9QTRFzEcXFSo5LMd7vZC5Q8yhxyw5YApPQrYeZCwk49NMSqC07ZCn7c8bKTqKJNibbCRbHkFLhZCFayGciGHC2NzrTmJZCMf73GZBprP0rBe1ZBwpYwaLsiq3LLlLqATkJmsL7I5XqBreVep1mCraHM';
-
-  let orgs = ['alachuahumane.org', 'AARP', 'sustainableuf', 'ShandsArtsinMedicine', 'HarnMuseumofArt', 'gatorsmiles', 'gatorpalsapp2017'];
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '291380158062880',
-    cookie     : true,
-    xfbml      : true,
-    version    : 'v2.12'
-  });
-
-  // FB.AppEvents.logPageView();
-
-  FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-  });
-
-};
-
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "https://connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
-
- function statusChangeCallback(response) {
-   if(response.status === 'connected') {
-     console.log('Logged in and authenticated');
-     console.log(response);
-     // at = response.authResponse.accessToken;
-
-     console.log(vm);
-
-     for(var org in orgs) {
-       populateDB($scope, orgs[org], at, vm);
-     }
-
-   }
-   else {
-     console.log('Not authenticated');
-   }
- }
-
-function populateDB(org, at) {
-  FB.api('/' + org + '?fields=name,events' + '&access_token=' + at, function(response) {
-    if(response && !response.error) {
-      console.log(response);
-    }
-    else {
-      console.log(response.error);
-    }
-  })
-}
-</script>
+  <script src="/javascripts/facebook.js"></script>
   <% include header/header.ejs %>
   <div class="container">
     <section class="organization-list">
+      <fb:login-button
+        scope="email, user_events"
+        onlogin="checkLoginState();">
+      </fb:login-button>
       <div class="organization-list_item">
         <a href="#">
           <img src="#" alt="">
@@ -96,4 +43,5 @@ function populateDB(org, at) {
     </section>
     <div><a  class="floating-action-button" href="#">+</a></div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
