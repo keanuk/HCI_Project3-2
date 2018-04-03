@@ -7,38 +7,9 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
+  <% include header/header.ejs %>
   <div class="container">
-    <header class="header">
-      <div class="title">
-        <a href="#"><h1>Title</h1></a>
-      </div>
-
-      <nav class="navbar">
-        <ul>
-          <li class="navbar_item"><a href="">Home</a></li>
-          <li class="navbar_item"><a href="">About</a></li>
-          <li class="navbar_item">
-            <div class="categories">
-              <div class="categories-button">Categories</div>
-              <ul class="categories-list">
-                <li class="categories-list_item"><a href="">Category 1</a></li>
-                <li class="categories-list_item"><a href="">Category 2</a></li>
-                <li class="categories-list_item"><a href="">Category 3</a></li>
-              </ul>
-            </div>
-          </li>
-          <div class="search-bar">
-            <form action="#">
-              <input class="search-bar_text" type="text" placeholder="Search all organizations..">
-              <button class="search-bar_button" type="submit"><strong>GO</strong></button>
-            </form>
-          </div>
-        </ul>
-      </nav>
-    </header>
-
     <section class="organization-list">
       <div class="organization-list_item">
         <a href="#">
@@ -65,9 +36,6 @@
         </a>
       </div>
     </section>
-
     <div><a  class="floating-action-button" href="#">+</a></div>
-
   </div>
-
 </body>
