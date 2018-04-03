@@ -16,6 +16,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+#loggedOut{
+  display: block;
+}
+
+#loggedIn {
+  display: none;
+}
+
 .header {
   background-color: white;
   height: 15vh;

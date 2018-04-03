@@ -49,6 +49,5 @@
         OrganizationService.getAll();
         console.log(OrganizationService.getAll());
       }
-
     }
 })()
