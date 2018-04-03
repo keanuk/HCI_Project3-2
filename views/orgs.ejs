@@ -13,29 +13,56 @@
 <body ng-app="volunteerApp">
 
   <div ng-controller="OrganizationController" class="col-md-12">
-    <section class="organization-list">
-
+    <section class="content-body">
+      <img src="/images/community.jpg" alt="" class="signup-picture">
       <form name="newOrg" class="form-horizontal">
         <fieldset>
           <div class="form-group" show-errors>
-            <label>Name</label>
-            <input name="name" ng-model="newOrganization.name" type="text" id="name" class="form-control" placeholder="enter organization name" required>
-            <div ng-messages="Must include name" role="alert">
-              <p class="help-block error-text" message="required"></p>
+            <div class="form-group_item">
+              <label>Name</label>
+              <input name="name" ng-model="newOrganization.name" type="text" id="name" class="form-control" placeholder="enter organization name" required>
+              <div ng-messages="Must include name" role="alert">
+                <p class="help-block error-text" message="required"></p>
+              </div>
             </div>
-            <label>Username</label>
-            <input name="username" ng-model="newOrganization.username" type="text" id="username" class="form-control" placeholder="enter username">
-            <label>Website</label>
-            <input name="website" ng-model="newOrganization.website" type="text" id="website" class="form-control" placeholder="enter website">
-            <label>Facebook Url</label>
-            <input name="facebookURL" ng-model="newOrganization.facebookURL" type="text" id="facebookURL" class="form-control" placeholder="enter Facebook url">
-
-            <label>Description</label>
-            <input name="description" ng-model="newOrganization.description" type="text" id="description" class="form-control" placeholder="enter orgaization description">
+            <div class="form-group_item">
+              <label>Username</label>
+              <input name="username" ng-model="newOrganization.username" type="text" id="username" class="form-control" placeholder="enter username">
+            </div>
+            <div class="form-group_item">
+            <label>Category</label>
+              <select class="selectpicker form-control" data-style="btn-info" name="selectpicker">
+                <optgroup label="Select Category ">
+                  <option name="Category 1" value="1">Category 1</option>
+                  <option name="Category 2" value="2">Category 2</option>
+                  <option name="Category 3" value="3">Category 3</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group_item">
+              <label>Website</label>
+              <input name="website" ng-model="newOrganization.website" type="text" id="website" class="form-control" placeholder="enter website">
+            </div>
+            <div class="form-group_item">
+              <label>Facebook Url</label>
+              <input name="facebookURL" ng-model="newOrganization.facebookURL" type="text" id="facebookURL" class="form-control" placeholder="enter Facebook url">
+            </div>
+            <div class="form-group_item">
+              <label>Header Picture Url</label>
+              <input name="headerPictureURL" ng-model="newOrganization.headerPictureURL" type="text" id="headerPictureURL" class="form-control" placeholder="enter url for header picture">
+            </div>
+            <div class="form-group_item">
+              <label>Profile Picture Url</label>
+              <input name="profilePictureURL" ng-model="newOrganization.profilePictureURL" type="text" id="profilePicutreURL" class="form-control" placeholder="enter url for profile picture">
+            </div>
+            <div class="form-group_item full-width">
+              <label>Description</label>
+              <textarea name="description" ng-model="newOrganization.description" type="text" id="description" class="form-control" placeholder="enter orgaization description" cols="60" rows="3"></textarea>
+            </div>
 
           </div>
           <div class="form-group">
-            <button ng-click="addOrganization(newOrganization)" class="btn btn-default">submit</button>
+            <button ng-click="addOrganization(newOrganization)" class="btn btn-default">Submit</button>
           </div>
         </fieldset>
       </form>

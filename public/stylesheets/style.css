@@ -222,6 +222,82 @@ hr {
 /*--profile.css--*/
 
 
+.content-body {
+  width: 100%;
+  margin-top: 20vh;
+}
+
+.signup-picture {
+  width: 50%;
+  height: 80vh;
+  float: left;
+  position: fixed;
+}
+
+.form-horizontal {
+  margin-left: 50%;
+  padding-top: 5vh;
+}
+
+.form-group {
+  text-align: left;
+  font-size: 150%;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-group_item {
+  width: 40%;
+  padding: 0 5%;
+  float: left;
+}
+
+.full-width {
+  width: 90%;
+}
+
+label {
+  display: block;
+  width: auto;
+  font-size: 120%;
+}
+
+.form-control {
+  width: auto;
+  text-align: left;
+  margin-bottom: 2px;
+  padding: 0.5em 0.2em;
+  font-size: 0.8em;
+  overflow: scroll;
+}
+
+.btn-default {
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #cecece;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 #666;
+  transition: all 0.1s ease-in-out;
+  font-size: 100%;
+  text-align: center;
+  line-height: 55px;
+}
+
+.btn-default:hover {
+  cursor: pointer;
+  transform: translate(0, 6px);
+  box-shadow: 0 0;
+}
+
+#description {
+  overflow: auto;
+  resize: none;
+}
+
+
 @media screen and (min-width: 700px)  {
   .header {
     height: 10vh;
