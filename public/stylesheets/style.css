@@ -222,17 +222,29 @@ hr {
   width: 50%;
   height: 80vh;
   float: left;
+  position: fixed;
 }
 
 .form-horizontal {
-  margin-left: 60%;
+  margin-left: 50%;
   padding-top: 5vh;
 }
 
 .form-group {
   text-align: left;
   font-size: 150%;
-  width: 50%;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-group_item {
+  width: 40%;
+  padding: 0 5%;
+  float: left;
+}
+
+.full-width {
+  width: 100%;
 }
 
 label {
@@ -251,11 +263,18 @@ label {
 }
 
 .btn-default {
-  width: 4em;
-  height: 2em;
-  font-size: 120%;
-  border-radius: 10px;
+  height: 100px;
+  width: 100px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #cecece;
+  border-radius: 50%;
   box-shadow: 0 6px 10px 0 #666;
+  transition: all 0.1s ease-in-out;
+  font-size: 20px;
+  text-align: center;
+  line-height: 55px;
 }
 
 .btn-default:hover {
