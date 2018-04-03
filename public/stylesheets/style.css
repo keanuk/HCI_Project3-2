@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font: 1em 'Roboto', sans-serif;
+}
+
+/*for browsers that don't support semantic tags*/
+ header, footer, main, section, nav {
+  display: block;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.header {
+  background-color: white;
+  height: 15vh;
+  width: 100%;
+  padding: 5vh;
+  position: fixed;
+  top: 0;
+  box-shadow: 5px 5px 50px #ededed;
+}
+.title {
+  height: 50%;
+}
+.navbar {
+  width: 100%;
+  height: 50%;
+}
+
+.navbar_item {
+  height: 100%;
+  width: 20%;
+  margin: 5px;
+  text-align: left;
+  display: inline;
+  float: left;
+  font-size: 150%;
+}
+
+.navbar_item:hover {
+  color: #9b9b9b;
+}
+
+.search-bar {
+  float: none;
+  margin-right: 5%;
+}
+.search-bar_text[type=text] {
+  background-color: #ededed;
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+.search-bar_button {
+  float: none;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.search-bar_button:hover {
+  background-color: #777777;
+}
+.categories-list {
+  display: none;
+}
+.organization-list {
+  margin-top: 25vh;
+  font-size: 150%;
+}
+.organization-list_item {
+  width: 90%;
+  padding-top: 63%;
+  margin: 5%;
+  background-color: #c1c1c1;
+}
+.floating-action-button {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #00b22a;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 #666;
+  transition: all 0.1s ease-in-out;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: 55px;
+}
+.floating-action-button:active {
+  bottom: 24px;
+  box-shadow: 0 0;
+}
+@media screen and (min-width: 700px)  {
+  .header {
+    height: 10vh;
+  }
+  .navbar_item {
+    height: 100%;
+    width: 10%;
+    margin: 5px;
+    text-align: left;
+    display: inline;
+    float: left;
+    font-size: 150%;
+  }
+  .search-bar {
+    float: right;
+  }
+  .search-bar_button {
+    float: right;
+  }
+  .categories {
+    position: fixed;
+    left: 0;
+    top: 20vh;
+    width:20%;
+    height:100%;
+    background-color: #262626;
+    color: white;
+    font-size: 100%;
+  }
+  .categories-list {
+    display: block;
+    text-align: center;
+    padding-top: 20%;
+  }
+  .categories-button {
+    font-size: 150%;
+    text-align: center;
+    padding-top: 10%;
+  }
+  .categories-list_item {
+    padding: 0 20% 20% 20%;
+  }
+  .organization-list {
+    width: 80%;
+    margin-left: 20%;
+    margin-top: 20vh;
+  }
+  @media screen and (min-width: 1024px) {
+    .organization-list_item {
+      width: 40%;
+      padding-top: 28%;
+      float: left;
+    }
+  }
+}
