@@ -281,11 +281,12 @@ label {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: #cecece;
+  background-color: #00b22a;
   border-radius: 50%;
   box-shadow: 0 6px 10px 0 #666;
   transition: all 0.1s ease-in-out;
   font-size: 100%;
+  color: white;
   text-align: center;
   line-height: 55px;
 }
@@ -301,6 +302,24 @@ label {
   resize: none;
 }
 
+.feature-list_item {
+  width: 100%;
+  height: auto;
+  font-size: 2em;
+}
+
+.feature-list_item:nth-child(even) {
+  background-color: #262626;
+  color: white;
+}
+
+.big-word {
+  font-size: 3em;
+}
+
+.feature-list_item p {
+  padding: 8%;
+}
 
 @media screen and (min-width: 700px)  {
   .header {
@@ -342,6 +361,7 @@ label {
     padding-top: 10%;
   }
   .categories-list_item {
+    text-align: left;
     padding: 0 20% 20% 20%;
   }
   .organization-list {
