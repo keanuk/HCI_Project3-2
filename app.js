@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var aboutRouter = require('./routes/about');
 var orgsRouter = require('./routes/orgs');
+var profileRouter = require('./routes/profile');
 
 // var mongoose = require('mongoose');
 // var mongoURI = process.env.MONGOURI || require("./secrets").mongoURI;
@@ -39,6 +40,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/about', aboutRouter);
 app.use('/orgs', orgsRouter);
+app.use('/profile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
