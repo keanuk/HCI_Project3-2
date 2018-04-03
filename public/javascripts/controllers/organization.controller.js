@@ -47,6 +47,7 @@
       function getOrganizations(){
         console.log("getting the organizations");
         OrganizationService.getAll();
+        console.log(OrganizationService.getAll());
       }
 
     }

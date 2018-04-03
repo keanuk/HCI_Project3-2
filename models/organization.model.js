@@ -19,7 +19,9 @@ var organizationSchema = mongoose.Schema({
       type: Date,
       default: Date.now
     }
-  }]
+  }],
+  headerImg: String,
+  profileImg: String
 });
 
 // Mongoose Model
