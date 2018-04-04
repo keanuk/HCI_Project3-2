@@ -17,14 +17,16 @@
   <header class="profile-header">
     <div class="profile-picture"><img src=<%- JSON.stringify(organization[0].profileImg) %> alt="profile picture"></div>
     <div class="profile-name"><h1><%- JSON.stringify(organization[0].name).replace(/["']/g, "") %></h1></div>
+    <button class="edit-btn edit">Edit Profile</button>
+    <button class="edit-btn save">Save</button>
   </header>
 
   <section class="info-box">
     <h2 class="info-box_heading">About Us</h2>
-    <p><%- JSON.stringify(organization[0].description).replace(/["']/g, "") %></p>
+    <p class="editable"><%- JSON.stringify(organization[0].description).replace(/["']/g, "") %></p>
     <br>
-    <p><%- JSON.stringify(organization[0].website).replace(/["']/g, "") %></p>
-    <p><%- JSON.stringify(organization[0].facebookURL).replace(/["']/g, "") %></p>
+    <p class="editable"><%- JSON.stringify(organization[0].website).replace(/["']/g, "") %></p>
+    <p class="editable"><%- JSON.stringify(organization[0].facebookURL).replace(/["']/g, "") %></p>
     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ratione, dicta sint modi? Tenetur perferendis eos magnam impedit, repellat explicabo adipisci. Officiis itaque laudantium incidunt, accusamus amet inventore eius delectus?</p> -->
   </section>
 
@@ -32,7 +34,7 @@
     <section class="social-feed one-third-column">
       <h2 class="column-heading">Social Feed</h2>
       <section class="social-feed_content">
-
+        
       </section>
     </section>
 
@@ -102,7 +104,24 @@
 
     </section>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/javascripts/app.js"></script>
   <script src='/javascripts/controllers/profile.controller.js'></script>
+  <script src='/javascripts/controllers/organization.controller.js'></script>
   <script src='/javascripts/services/organization.service.js'></script>
+  <script>
+
+    $(".edit").click(function() {
+      $(document.getElementsByClassName("editable")).attr('contentEditable', 'true');
+      $(".edit").css({"display":"none"});
+      $(".save").css({"display":"block"});
+    });
+
+    $(".save").click(function() {
+      $(document.getElementsByClassName("editable")).attr('contentEditable', 'false');
+      $(".edit").css({"display":"block"});
+      $(".save").css({"display":"none"});
+    });
+
+  </script>
 </body>
