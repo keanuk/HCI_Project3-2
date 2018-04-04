@@ -135,9 +135,9 @@
           if(response && !response.error) {
             console.log(response);
 
-            var entry = document.createElement('li');
+            var entry = document.createElement('h3');
             entry.appendChild(document.createTextNode(response.name));
-            document.getElementById("barList").appendChild(entry);
+            document.getElementById("fbstatus").appendChild(entry);
           }
           else {
             console.log(response.error);
@@ -151,7 +151,7 @@
 
         if(newOrganization.username) {
           newOrganization.name = "No name";
-          newOrganization.about = "No information";
+          newOrganization.description = "No information";
           newOrganization.website = "No website";
 
           FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture,cover' + '&access_token=' + fbToken, function(response) {
