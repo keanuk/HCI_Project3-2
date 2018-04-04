@@ -1,5 +1,5 @@
 // immediately invoked functional expression
 (function(){
-  angular.module("volunteerApp", []); //setter syntax
+  angular.module('volunteerApp', []); //setter syntax
 
 })()

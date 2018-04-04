@@ -19,6 +19,14 @@
                     });
       }
 
+      function getOne(organizationId){
+        return $http.get(`${baseURL}/${organizationId}`)
+                    .then(function(response) {
+                      organizations = response.data.organizations;
+                    });
+      }
+
+
       function create(organization){
         return $http.post(baseURL, organization)
                     .then(getAll);
@@ -37,6 +45,7 @@
 
       return {
         getAll: getAll,
+        getOne: getOne,
         create: create,
         delete: deleteOrganization,
         update: update,

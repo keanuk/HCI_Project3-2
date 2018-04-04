@@ -13,6 +13,7 @@
       $scope.deleteOrganization = deleteOrganization;
       $scope.update = update;
       $scope.edit = edit;
+      $scope.focusedOrganization = {};
 
       let fbToken = '';
 
@@ -61,6 +62,15 @@
         console.log(OrganizationService.getAll());
         fbTest();
       }
+
+
+      $scope.getOneOrganization = function(organizationId) {
+        console.log('getting one organization: ' + organizationId);
+        $scope.focusedOrganization = OrganizationService.getOne(organizationId);
+        console.log('focusedOrganization = ' + $scope.focusedOrganization);
+
+      };
+
 
 
       function getFB() {
