@@ -17,6 +17,7 @@
   <header class="profile-header">
     <div class="profile-picture"><img src=<%- JSON.stringify(organization[0].profileImg) %> alt="profile picture"></div>
     <div class="profile-name"><h1><%- JSON.stringify(organization[0].name).replace(/["']/g, "") %></h1></div>
+    <button class="edit-btn" style="background-color:red; color:white;" ng-click="deleteOrganization()">Delete Profile</button>
     <button class="edit-btn edit">Edit Profile</button>
     <button class="edit-btn save">Save</button>
   </header>

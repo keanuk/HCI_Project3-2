@@ -33,6 +33,7 @@
       }
 
       function deleteOrganization(organization){
+        console.log(organization._id);
         return $http.delete(`${baseURL}/${organization._id}`)
                     .then(getAll);
       }

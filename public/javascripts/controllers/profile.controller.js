@@ -6,9 +6,12 @@
 
     function ProfileController($scope, $location, OrganizationService){
 
-      $scope.organization = {};
       $scope.myUrl = $location.absUrl();
       $scope.showhide = showhide;
+      $scope.organization = OrganizationService.getOne($scope.myUrl.slice($scope.myUrl.lastIndexOf('profile') + 8));
+      getOrganization($scope.myUrl.slice($scope.myUrl.lastIndexOf('profile') + 8));
+      console.log('org ' + $scope.organization);
+      $scope.deleteOrganization = deleteOrganization;
       //$scope.addEvent = addEvent;
 
       console.log('my url: ' + $scope.myUrl);
@@ -18,6 +21,11 @@
       function getOrganization(organizationId){
         console.log('organization id: ' + organizationId);
         console.log(OrganizationService.getOne(organizationId));
+      }
+
+      function deleteOrganization() {
+        console.log('deleting organization');
+        OrganizationService.delete($scope.organization);
       }
 
       function showhide(id) {
