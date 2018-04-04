@@ -112,7 +112,7 @@ a {
   text-align: center;
   line-height: 55px;
 }
-.floating-action-button:active {
+.floating-action-button:hover {
   bottom: 24px;
   box-shadow: 0 0;
 }
@@ -223,6 +223,35 @@ hr {
   margin-top: 5px;
 }
 
+.edit-btn {
+  float: right;
+  font-size: 1.2em;
+  margin-right: 15px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+}
+
+.save {
+  display: none;
+}
+
+.editing {
+  height: 96%;
+  width: 96%;
+  padding: 2%;
+  resize: none;
+  overflow: auto;
+}
+
+[contenteditable="true"] {
+  border: 2px solid #ccc;
+  padding: 5px 2px;
+}
+
 /*--profile.css--*/
 
 
@@ -278,23 +307,6 @@ label {
 .btn-default {
   height: 100px;
   width: 100px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background-color: #00b22a;
-  border-radius: 50%;
-  box-shadow: 0 6px 10px 0 #666;
-  transition: all 0.1s ease-in-out;
-  font-size: 100%;
-  color: white;
-  text-align: center;
-  line-height: 55px;
-}
-
-.btn-default:hover {
-  cursor: pointer;
-  transform: translate(0, 6px);
-  box-shadow: 0 0;
 }
 
 #description {
