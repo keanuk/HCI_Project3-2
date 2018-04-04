@@ -47,6 +47,7 @@
       }
 
       function addOrganization(newOrganization){
+        newOrganization.category = document.getElementById("cateSelect").value
         OrganizationService.create(newOrganization)
                   .then(function(response){
                     $scope.newOrganization = {};
