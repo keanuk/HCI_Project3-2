@@ -390,4 +390,7 @@ label {
       float: left;
     }
   }
+  .this-fun-form {
+    display: none;
+  }
 }
