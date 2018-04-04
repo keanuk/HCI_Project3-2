@@ -10,6 +10,7 @@ var organizationSchema = mongoose.Schema({
   website: String,
   facebookURL: String,
   description: String,
+  category: String,
   events: [{
     title: String,
     description: String,
