@@ -384,7 +384,9 @@ label {
   @media screen and (min-width: 1024px) {
     .organization-list_item {
       width: 40%;
-      padding-top: 28%;
+      padding: 0;
+      margin: 2% 5%;
+      background: none;
       float: left;
     }
   }

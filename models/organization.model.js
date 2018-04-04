@@ -22,7 +22,7 @@ var organizationSchema = mongoose.Schema({
   }],
   headerImg: {
     type: String,
-    default: 'http://via.placeholder.com/700x300'
+    default: '/images/brick-wall.jpg'
   },
   profileImg: {
     type: String,
