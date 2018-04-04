@@ -43,11 +43,13 @@
 
         <%
         var eventsLength = JSON.stringify(organization[0].events.length);
-        var events = JSON.stringify(organization[0].events);
-        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        if(eventsLength != 0) {
+          var events = JSON.stringify(organization[0].events);
+          var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-        for(var i in eventsLength){ %>
+          for(var i in eventsLength){
+        %>
 
         <div class="event-feed_item">
           <!-- <p class="event-title"><strong>title</strong></p> -->
@@ -69,7 +71,7 @@
           </p>
         </div>
 
-        <%} %>
+        <%}}%>
       </section>
 
       <!-- <section class="event-feed_content">
