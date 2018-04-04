@@ -30,7 +30,7 @@
     <section class="organization-list">
       <div ng-repeat="organization in organizations | filter:search" class="organization-list_item">
         <a href="/profile/{{ organization._id }}">
-          <img src="#" alt="">
+          <img src="{{ organization.headerImg }}" alt="" style="max-width: 400px; max-height: 400px">
           <p>{{ organization.name }}</p>
         </a>
       </div>

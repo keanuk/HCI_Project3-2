@@ -149,7 +149,7 @@
         console.log(newOrganization);
 
         if(newOrganization.username) {
-          FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture' + '&access_token=' + fbToken, function(response) {
+          FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture,cover' + '&access_token=' + fbToken, function(response) {
             if(response && !response.error) {
               console.log("getting data from fb");
               console.log(response);
@@ -166,7 +166,9 @@
               if(response.picture.data.url) {
                 newOrganization.profileImg = response.picture.data.url;
               }
-              
+              if(response.cover.source) {
+                newOrganization.headerImg = response.cover.source;
+              }
 
               addOrganization(newOrganization);
             }
