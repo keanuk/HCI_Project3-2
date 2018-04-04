@@ -10,12 +10,13 @@
       $scope.organizations = [];
       $scope.newOrganization = {};
       $scope.addOrganization = addOrganization;
+      $scope.getFBData = getFBData;
       $scope.deleteOrganization = deleteOrganization;
       $scope.update = update;
       $scope.edit = edit;
       $scope.focusedOrganization = {};
 
-      let fbToken = '';
+      let fbToken = 'EAACEdEose0cBAPm4uSCfcYwkZBfbDWsC71lMWP21iqasJI9f4mVF214AL9Ts1RrSUExZBUZCFFm7nDsgvzmdOEgd54CZBherRLLbMkx7YFBM4ponrIgnRibWLbABzTgnfFHYwm3QqQ4VW4gKYs2bPKUhK8sBKEJJoZCQ0svXuNJ3SfE0aInALUyCfXidLSrDbsdyN5fU5ZCkhCUqoEElpG';
 
       getFB();
 
@@ -46,10 +47,6 @@
       }
 
       function addOrganization(newOrganization){
-        console.log("creating a new organization: " + newOrganization);
-        // if(newOrganization.username) {
-        //   newOrganization = getFBData(newOrganization.username, newOrganization);
-        // }
         OrganizationService.create(newOrganization)
                   .then(function(response){
                     $scope.newOrganization = {};
@@ -60,7 +57,6 @@
         console.log("getting the organizations");
         OrganizationService.getAll();
         console.log(OrganizationService.getAll());
-        fbTest();
       }
 
 
@@ -114,8 +110,6 @@
 
          // fbToken = response.authResponse.accessToken;
 
-         fbToken = 'EAACEdEose0cBACla863UvdsOHvS2BZCMFH6RMqsJ92IxIyFWoLxO76MMUnXJ6IAOdM6mU1AhZBJBOZCJZCvBSfC9t28vn4OBkjH4W5fyKGJzvuInvNKkswrzezqWV7z2l89zd1vmxPOiuC70ownz9nuhh0A1gP7Gk9L6cHvRoYYvPD3qyDZC5186E3VcjMdzZBAQ0VtaZByQn0Y40WYlhFt';
-
          getProfile(at);
 
          getOrganizations();
@@ -150,35 +144,44 @@
         })
       }
 
-      function getFBData(orgName, newOrganization) {
-        FB.api('/' + orgName + '?fields=name,feed' + '&access_token=' + fbToken, function(response) {
-          if(response && !response.error) {
-            console.log("getting data from fb");
-            console.log(response);
-            if(response.name) {
-              newOrganization.name = response.name;
+      function getFBData(newOrganization) {
+        console.log("new org");
+        console.log(newOrganization);
+
+        if(newOrganization.username) {
+          FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture,cover' + '&access_token=' + fbToken, function(response) {
+            if(response && !response.error) {
+              console.log("getting data from fb");
+              console.log(response);
+              newOrganization.facebookURL = "https://www.facebook.com/" + newOrganization.username;
+              if(response.name) {
+                newOrganization.name = response.name;
+              }
+              if(response.about) {
+                newOrganization.description = response.about;
+              }
+              if(response.website) {
+                newOrganization.website = response.website;
+              }
+              if(response.picture.data.url) {
+                newOrganization.profileImg = response.picture.data.url;
+              }
+              if(response.cover.source) {
+                newOrganization.headerImg = response.cover.source;
+              }
+
+              addOrganization(newOrganization);
             }
-            return newOrganization;
-          }
-          else {
-            console.log(response.error);
-            return newOrganization;
-          }
-        })
+            else {
+              console.log(response.error);
+              addOrganization(newOrganization);
+            }
+          })
+
+        }
+        else {
+          addOrganization(newOrganization);
+        }
       }
-
-      function fbTest() {
-        FB.api('/' + 'me' + '?fields=name,feed' + '&access_token=' + fbToken, function(response) {
-          if(response && !response.error) {
-            console.log("Test");
-            console.log(response);
-          }
-          else {
-            console.log(response.error);
-          }
-        })
-      }
-
-
     }
 })()
