@@ -16,7 +16,7 @@
       $scope.edit = edit;
       $scope.focusedOrganization = {};
 
-      let fbToken = 'EAACEdEose0cBAFxFogTGmVH93GbJIGNWesZBOqegZB1Eis5oQzTTOi5ZBhcrfH525EvctZCbY6BBnU8okVZBpyJ1QHtrSaheWHz2j9n9tLWueIv3MbwETxjeGnmkUyIt3oeGirJEZBEgvdC0AsNtCa9oRaISbzOKVHDP3AXOfC5wZACOLaQVskDpRRSRPQc9lSHtYxQ47T7zFrJqAtd3fyM';
+      let fbToken = 'EAACEdEose0cBAPaPy2d55fWpN4vS8wv6p1c3l994LhXWWZAVBFWUfBRgbrFW6oGMg6SZApb66QzN3Q9ZBGEcUFN8nHldD5lqP9vOVdf9ZCSeEEvXRLskQZAsHgS11IEmtHfG3gYVh8VpFq7sfu25Jqkxo6g99g5byEMCMcCgr4lVHDLXJaZBGRhpEnr8uyu8oqxvap7SM89ji7k9zuYjzT';
 
       getFB();
 
@@ -146,9 +146,6 @@
       }
 
       function getFBData(newOrganization) {
-        console.log("new org");
-        console.log(newOrganization);
-
         if(newOrganization.username) {
           newOrganization.name = "No name";
           newOrganization.description = "No information";
@@ -156,8 +153,6 @@
 
           FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture,cover' + '&access_token=' + fbToken, function(response) {
             if(response && !response.error) {
-              console.log("getting data from fb");
-              console.log(response);
               newOrganization.facebookURL = "https://www.facebook.com/" + newOrganization.username;
               if(response.name) {
                 newOrganization.name = response.name;
@@ -181,17 +176,23 @@
                 let eLoc = "No location";
                 for(i in response.events.data) {
                   if(response.events.data[i].name) {
-                    eTitle = response.events.data[i].name
+                    eTitle = response.events.data[i].name;
                   }
                   if(response.events.data[i].description) {
-                    eDesc = response.events.data[i].description
+                    eDesc = response.events.data[i].description;
                   }
                   if(response.events.data[i].place) {
-                    eLoc = response.events.data[i].place.name
+                    eLoc = response.events.data[i].place.name;
                   }
                   newOrganization.events[i] = {"title" : eTitle, "description" : eDesc, "location" : eLoc};
                 }
-                console.log(newOrganization.events);
+              }
+              if(response.feed) {
+                newOrganization.feed = new Array(response.feed.data.length);
+                for(i in response.feed.data) {
+                  newOrganization.feed[i] = {"message": response.feed.data[i].message};
+                }
+                console.log(newOrganization.feed);
               }
               addOrganization(newOrganization);
             }

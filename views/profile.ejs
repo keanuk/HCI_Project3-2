@@ -27,14 +27,26 @@
     <br>
     <p class="editable"><%- JSON.stringify(organization[0].website).replace(/["']/g, "") %></p>
     <p class="editable"><%- JSON.stringify(organization[0].facebookURL).replace(/["']/g, "") %></p>
-    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ratione, dicta sint modi? Tenetur perferendis eos magnam impedit, repellat explicabo adipisci. Officiis itaque laudantium incidunt, accusamus amet inventore eius delectus?</p> -->
   </section>
+
+  <
 
   <div class="page-content">
     <section class="social-feed one-third-column">
       <h2 class="column-heading">Social Feed</h2>
       <section class="social-feed_content">
-
+        <%
+        let feedLength = JSON.stringify(organization[0].feed.length);
+        if(feedLength != 0) {
+          let message = JSON.stringify(organization[0].feed);
+          for(i in feedLength) {
+        %>
+        <div class="event-feed_item">
+          <p class="event-description">
+            <%= JSON.stringify(organization[0].feed[i].message) %>
+          </p>
+        </div>
+        <% }} %>
       </section>
     </section>
 

@@ -21,6 +21,9 @@ var organizationSchema = mongoose.Schema({
       default: Date.now
     }
   }],
+  feed: [{
+    message: String
+  }],
   headerImg: {
     type: String,
     default: '/images/brick-wall.jpg'
