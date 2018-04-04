@@ -16,7 +16,7 @@
       $scope.edit = edit;
       $scope.focusedOrganization = {};
 
-      let fbToken = 'EAACEdEose0cBAPm4uSCfcYwkZBfbDWsC71lMWP21iqasJI9f4mVF214AL9Ts1RrSUExZBUZCFFm7nDsgvzmdOEgd54CZBherRLLbMkx7YFBM4ponrIgnRibWLbABzTgnfFHYwm3QqQ4VW4gKYs2bPKUhK8sBKEJJoZCQ0svXuNJ3SfE0aInALUyCfXidLSrDbsdyN5fU5ZCkhCUqoEElpG';
+      let fbToken = 'EAACEdEose0cBAFxFogTGmVH93GbJIGNWesZBOqegZB1Eis5oQzTTOi5ZBhcrfH525EvctZCbY6BBnU8okVZBpyJ1QHtrSaheWHz2j9n9tLWueIv3MbwETxjeGnmkUyIt3oeGirJEZBEgvdC0AsNtCa9oRaISbzOKVHDP3AXOfC5wZACOLaQVskDpRRSRPQc9lSHtYxQ47T7zFrJqAtd3fyM';
 
       getFB();
 
@@ -47,6 +47,7 @@
       }
 
       function addOrganization(newOrganization){
+        newOrganization.category = document.getElementById("cateSelect").value
         OrganizationService.create(newOrganization)
                   .then(function(response){
                     $scope.newOrganization = {};
@@ -149,6 +150,10 @@
         console.log(newOrganization);
 
         if(newOrganization.username) {
+          newOrganization.name = "No name";
+          newOrganization.about = "No information";
+          newOrganization.website = "No website";
+
           FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture,cover' + '&access_token=' + fbToken, function(response) {
             if(response && !response.error) {
               console.log("getting data from fb");
@@ -169,7 +174,25 @@
               if(response.cover.source) {
                 newOrganization.headerImg = response.cover.source;
               }
-
+              if(response.events.data) {
+                newOrganization.events = new Array(response.events.data.length);
+                let eTitle = "No Title";
+                let eDesc = "No Description";
+                let eLoc = "No location";
+                for(i in response.events.data) {
+                  if(response.events.data[i].name) {
+                    eTitle = response.events.data[i].name
+                  }
+                  if(response.events.data[i].description) {
+                    eDesc = response.events.data[i].description
+                  }
+                  if(response.events.data[i].place) {
+                    eLoc = response.events.data[i].place.name
+                  }
+                  newOrganization.events[i] = {"title" : eTitle, "description" : eDesc, "location" : eLoc};
+                }
+                console.log(newOrganization.events);
+              }
               addOrganization(newOrganization);
             }
             else {
@@ -177,7 +200,6 @@
               addOrganization(newOrganization);
             }
           })
-
         }
         else {
           addOrganization(newOrganization);
