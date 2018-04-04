@@ -150,6 +150,7 @@
           newOrganization.name = "No name";
           newOrganization.description = "No information";
           newOrganization.website = "No website";
+          newOrganization.facebookURL = "No Facebook";
 
           FB.api('/' + newOrganization.username + '?fields=id,name,website,about,events,feed,picture,cover' + '&access_token=' + fbToken, function(response) {
             if(response && !response.error) {
